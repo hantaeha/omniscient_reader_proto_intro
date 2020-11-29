@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<meta charset="utf-8">
+		  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1., user-scalable=no">
+			<meta http-equiv="X-UA-compatible" content="ie-edge">
+			<title>(가) 유형</title>
+			<link rel="stylesheet" href="./src/fullpage.min.css"/>
+			<script src="./src/fullpage.min.js"></script>
+			<script src="./src/scrolloverflow.min.js"></script>
+			<style>
+			body {
+			 margin: 0;
+			 font-family: serif, Arial, Helvetica, sans-serif;
+			 width:100%;
+			 overflow-x:hidden;
+			}
+
+			.navbar {
+			  text-align: center;
+			  overflow: hidden;
+			  background-color: #000000;
+			  position: fixed;
+			  bottom: 0;
+			  width: 100%;
+				z-index: 1;
+			}
+
+			.navbar a {
+			  display:inline-block;
+			  color: #f2f2f2;
+			  text-align: center;
+			  padding: 14px 16px;
+			  text-decoration: none;
+			  font-size: 17px;
+			  font-family: Arial, Helvetica, sans-serif;
+			}
+
+			.navbar a:hover {
+			  background: #f1f1f1;
+			  color: black;
+			}
+
+			.navbar a.active {
+			  background-color: #000000;
+			  color: white;
+			}
+			</style>
+	</head>
+<body>
+	<div class="magenta">
+		<audio src="bgm/PerformanceRNN/silence00.mp3" loop></audio>
+		<audio src="bgm/PerformanceRNN/silence01.mp3" loop></audio>
+		<audio src="bgm/PerformanceRNN/2-1.mp3" loop></audio>
+		<audio src="bgm/PerformanceRNN/2-4.mp3" loop></audio>
+		<audio src="bgm/PerformanceRNN/silence02.mp3" loop></audio>
+	</div>
+	<div id="magenta_list"></div>
+
+	<!--하단 메뉴창-->
+	<div class="navbar">
+	  <a href="2.html">(나) 유형 보기</a>
+	  <a href="main.html">유형 목록</a>
+	</div>
+
+	<div id="full-page">
+
+		<div class="section s0">
+
+			<center>(가) 유형 설명<p><br>
+				Swipe-Up<p><br>
+				 <center><img src="images/swipe_up.png" alt="Swipe Up" width="50px" height="50px">
+			</br></br></br>
+		</div>
+
+		<div class="section s1">
+								(가) 유형에서는 현악기 중심의 음악이
+								웹소설과 함께 재생됩니다.<p><br>
+
+			 				 <center><img src="images/swipe_up.png" alt="Swipe Up" width="50px" height="50px">
+			 			</br></br></br></br></br></br></br></br></br></br>
+
+		</div>
+
+		<div class="section s2">
+			지금 재생되는 음악을 들으시면서,
+			모바일 기기의 볼륨을 알맞게 조절해주세요.<p><br>
+
+				<center><img src="images/swipe_up.png" alt="Swipe Up" width="50px" height="50px">
+		 </br></br></br></br></br></br></br></br></br></br>
+		</div>
+
+		<div class="section s2">
+			혹시 음악이 정상적으로 재생되지 않는다면,
+			SAMSUNG Internet 앱을 재설치하거나
+			인터넷 연결 상태를 확인하시기 바랍니다.<p><br>
+
+				<center><img src="images/swipe_up.png" alt="Swipe Up" width="50px" height="50px">
+		 </br></br></br></br></br></br></br></br></br></br>
+		</div>
+
+		<div class="section s3">
+			실험 준비가 완료되었습니다.<p><br>
+			실험 페이지로 돌아가 다음 과정을 진행해주세요.<p><br>
+		</div>
+
+	<script type="text/javascript">
+	    new fullpage('#full-page', {
+				licenseKey:'',
+				scrollingSpeed:2000,
+				scrollOverflow:true,
+				onLeave : function(origin, destination, direction){
+					var count = 0;
+					var fade_out_effect  = setInterval(function(){
+						magenta_list[origin.index].volume -= 0.1;
+						count++;
+						if(count==10){
+							clearInterval(fade_out_effect);
+						}
+					}, 100)
+				},
+
+				afterLoad : function(origin, destination, direction){
+					sound_play(destination.index);
+				},
+			});
+
+			//초기 폰트 크기 정보 가져오기
+			var font_size_index = parseInt(localStorage.getItem("step"));
+			switch (font_size_index) {
+			case 5:
+			  document.getElementById('full-page').style.fontSize=25+"px";
+			  localStorage.setItem("font", "25");
+			  localStorage.setItem("step", "5");
+			  break;
+			case 4:
+			  document.getElementById('full-page').style.fontSize=22+"px";
+			  localStorage.setItem("font", "22");
+			  localStorage.setItem("step", "4");
+			  break;
+			case 3:
+			  document.getElementById('full-page').style.fontSize=19+"px";
+			  localStorage.setItem("font", "19");
+			  localStorage.setItem("step", "3");
+			  break;
+			case 2:
+			  document.getElementById('full-page').style.fontSize=16+"px";
+			  localStorage.setItem("font", "16");
+			  localStorage.setItem("step", "2");
+			  break;
+			case 1:
+			  document.getElementById('full-page').style.fontSize=13+"px";
+			  localStorage.setItem("font", "13");
+			  localStorage.setItem("step", "1");
+			  break;
+			default:
+			  if(font_size_index >= 5){
+			    font_size_index = 5
+			    document.getElementById('full-page').style.fontSize=25+"px";
+			    localStorage.setItem("font", "25");
+			    localStorage.setItem("step", "5");
+			  }else if(font_size_index <= 0){
+			    font_size_index = 1
+			    document.getElementById('full-page').style.fontSize=13+"px";
+			    localStorage.setItem("font", "13");
+			    localStorage.setItem("step", "1");
+			  }
+			}
+
+			// 사운드 데이터 가져오기
+			var magenta_Arr = document.querySelectorAll(".magenta > audio");
+
+			var magenta_list = [];
+			for (var el of magenta_Arr){
+				magenta_list.push(el);
+			}
+			//document.getElementById("magenta_list").innerHTML = list_0;
+			console.log(magenta_list);
+
+				//사운드 재생
+				function sound_play(value){
+					var page_index = parseInt(value);
+					magenta_list[page_index].currentTime = 0;
+					magenta_list[page_index].volume = 1;
+					magenta_list[page_index].play();
+				}
+
+	</script>
+</body>
+</html>
