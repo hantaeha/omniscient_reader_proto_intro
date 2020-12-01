@@ -4,7 +4,7 @@
 			<meta charset="utf-8">
 		  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1., user-scalable=no">
 			<meta http-equiv="X-UA-compatible" content="ie-edge">
-			<title>(가) 유형</title>
+			<title>실험 설명 및 예시</title>
 			<link rel="stylesheet" href="./src/fullpage.min.css"/>
 			<script src="./src/fullpage.min.js"></script>
 			<script src="./src/scrolloverflow.min.js"></script>
@@ -45,6 +45,46 @@
 			  background-color: #000000;
 			  color: white;
 			}
+
+			.sidenav {
+			  height: 100%;
+			  width: 0;
+			  position: fixed;
+			  z-index: 1;
+			  top: 0;
+			  right: 0;
+			  background-color: #111;
+			  overflow-x: hidden;
+			  transition: 0.1s;
+			  padding-top: 60px;
+			}
+
+			.sidenav a {
+			  padding: 8px 8px 8px 32px;
+			  text-decoration: none;
+			  font-size: 19px; /* 사이드 메뉴 글씨 크기 */
+			  color: #818181;
+			  display: block;
+			  transition: 0.1s;
+			}
+
+			.sidenav a:hover {
+			  color: #f1f1f1;
+			}
+
+			.sidenav .closebtn {
+			  position: absolute;
+			  top: 0;
+			  right: 25px;
+			  font-size: 36px; /* "X" 창닫기 크기 */
+			  margin-left: 50px;
+			}
+
+			@media screen and (max-height: 450px) {
+			  .sidenav {padding-top: 15px;}
+			  .sidenav a {font-size: 18px;}
+			}
+
 			</style>
 	</head>
 <body>
@@ -57,48 +97,56 @@
 	</div>
 	<div id="magenta_list"></div>
 
+	<!--사이드 메뉴 내용-->
+	<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#" style="color:white">실험 설명 및 예시</a>
+  <a href="main.html">홈</a>
+	</div>
+
 	<!--하단 메뉴창-->
 	<div class="navbar">
-	  <a href="2.html">(나) 유형 보기</a>
-	  <a href="main.html">유형 목록</a>
+		<a href="main.html">홈</a>
+	  <a onclick="openNav()">목차</a>
 	</div>
 
 	<div id="full-page">
 
 		<div class="section s0">
 
-			<center>(가) 유형 설명<p><br>			
+			<center>실험 설명 및 예시<p><br>
 				Swipe-Up<p><br>
 				 <center><img src="images/swipe_up.png" alt="Swipe Up" width="50px" height="50px">
 			</br></br></br>
 		</div>
 
 		<div class="section s1">
-								(가) 유형에서는 현악기 중심의 음악이
-								웹소설과 함께 재생됩니다.<p><br>
+								본 실험에서는 현악기 중심의 음악이
+								웹소설과 함께 재생됩니다.<p><br></br></br></br></br>
 
 			 				 <center><img src="images/swipe_up.png" alt="Swipe Up" width="50px" height="50px">
-			 			</br></br></br></br></br></br></br></br></br></br>
+			 			</br></br></br></br></br>
 
 		</div>
 
 		<div class="section s2">
-			잠시만 기다리시면 음악이 재생됩니다.
+			잠시만 기다리시면 음악이 재생됩니다.<br>
 			혹시 음악이 정상적으로 재생되지 않는다면,
-			브라우저 앱을 재설치하거나
-			인터넷 연결 상태를 확인하시기 바랍니다.<p><br>
+			앱을 재설치하거나
+			인터넷 연결 상태를 확인하시기 바랍니다.
+<p><br></br></br></br></br>
 
 				<center><img src="images/swipe_up.png" alt="Swipe Up" width="50px" height="50px">
-		 </br></br></br></br></br></br></br></br></br></br>
+		 </br></br></br></br></br>
 		</div>
 
 		<div class="section s2">
-			잠시만 기다리시면 다른 음악이 재생됩니다.
+			잠시만 기다리시면 다른 음악이 재생됩니다.</br>
 			재생되는 음악을 들으시면서,
-			모바일 기기의 볼륨을 알맞게 조절해주세요.<p><br>
+			모바일 기기의 볼륨을 알맞게 조절해주세요.<p><br></br></br></br></br>
 
 				<center><img src="images/swipe_up.png" alt="Swipe Up" width="50px" height="50px">
-		 </br></br></br></br></br></br></br></br></br></br>
+		 </br></br></br></br></br>
 		</div>
 
 		<div class="section s3">
@@ -185,6 +233,14 @@
 					magenta_list[page_index].currentTime = 0;
 					magenta_list[page_index].volume = 1;
 					magenta_list[page_index].play();
+				}
+
+				function openNav() {
+				  document.getElementById("mySidenav").style.width = "250px";
+				}
+
+				function closeNav() {
+				  document.getElementById("mySidenav").style.width = "0";
 				}
 
 	</script>
